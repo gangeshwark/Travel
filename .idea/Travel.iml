@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="PYTHON_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="google-appengine-python" name="Google App Engine (Python)">
+      <configuration>
+        <option name="rootFolder" value="H:\PycharmProjects\Travel" />
+        <option name="sdkFolder" value="C:\Program Files (x86)\Google\google_appengine" />
+        <option name="templatesFolder" value="" />
+        <option name="email" value="gangeshwark@gmail.com" />
+        <option name="gp" value="dfc4dfc2dfc8dfdadfd9dfcbdfcbdfcddfc9dfd9dfdbdfc9dfcfdfd9dfdadfc4" />
+        <option name="oauth2" value="false" />
+      </configuration>
+    </facet>
+  </component>
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/lib" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Google App Engine SDK" level="project" />
+  </component>
+  <component name="TemplatesService">
+    <option name="TEMPLATE_CONFIGURATION" value="Jinja2" />
+    <option name="TEMPLATE_FOLDERS">
+      <list>
+        <option value="$MODULE_DIR$/../Travel\templates" />
+      </list>
+    </option>
+  </component>
+</module>
