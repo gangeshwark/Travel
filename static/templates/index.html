@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>{{ data.title }}</title>
+    <link type="text/css" rel="stylesheet" href="/static/assets/css/style.css"/>
+</head>
+<body>
+
+Hello user
+<form action="{{ url_for('login') }}" method="post">
+    <input type="text" name="username">
+    <input type="password" name="password">
+    <button type="submit">LOGIN</button>
+</form>
+{{ data.body }}
+
+</body>
+</html>
