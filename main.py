@@ -13,7 +13,7 @@ def hello_world():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    msg = 'Hello User!'
+    msg = 'Login Successful'
     if request.form['username'] != "admin":
         msg = "Invalid username!"
     elif request.form['password'] != "admin":
