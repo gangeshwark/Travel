@@ -33,10 +33,13 @@ def hello_world():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    # string = ''
     if request.form['username'] != '':
         string = str(request.form['username'])
         if isinstance(string, str):
             print string
+    elif request.form['password'] == '':
+        return render_template('verify.html', title="Invalid Password!")
     else:
         return render_template('verify.html', title="Enter a username!")
     query = """SELECT pw FROM HELLO.users WHERE username = '%s' """ % (string)

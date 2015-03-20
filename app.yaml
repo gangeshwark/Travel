@@ -41,3 +41,5 @@ handlers:
 libraries:
 - name: jinja2
   version: latest
+- name: MySQLdb
+  version: latest
