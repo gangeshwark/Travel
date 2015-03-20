@@ -990,6 +990,4 @@ from werkzeug.datastructures import Accept, HeaderSet, ETags, Authorization, \
 
 # DEPRECATED
 # backwards compatible imports
-from werkzeug.datastructures import MIMEAccept, CharsetAccept, \
-     LanguageAccept, Headers
 from werkzeug.urls import iri_to_uri
