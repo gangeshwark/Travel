@@ -5,7 +5,19 @@ import MySQLdb
 from flask import Flask, request
 from flask.templating import render_template
 
-
+env = os.getenv('SERVER_SOFTWARE')
+if (env and env.startswith('Google App Engine/')):
+    # Connecting from App Engine
+    db = MySQLdb.connect(
+        unix_socket='/cloudsql/gcdc2014-gangeshwark:testdb',
+        user='root')
+else:
+    # Connecting from an external network.
+    # Make sure your network is whitelisted
+    db = MySQLdb.connect(
+        host='173.194.251.37',
+        port=3306,
+        user='root')
 app = Flask(__name__)
 
 
@@ -21,19 +33,6 @@ def hello_world():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    env = os.getenv('SERVER_SOFTWARE')
-    if (env and env.startswith('Google App Engine/')):
-        # Connecting from App Engine
-        db = MySQLdb.connect(
-            unix_socket='/cloudsql/gcdc2014-gangeshwark:testdb',
-            user='root')
-    else:
-        # Connecting from an external network.
-        # Make sure your network is whitelisted
-        db = MySQLdb.connect(
-            host='173.194.251.37',
-            port=3306,
-            user='root')
     cur = db.cursor()
     # string = ''
     un = str(request.form['username'])
