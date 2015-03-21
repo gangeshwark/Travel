@@ -1,20 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="75542947">
-    <data-source source="LOCAL" name="MySQL - @173.194.251.37" uuid="c64cec1b-5cec-4964-b84f-958f91a3d8dc">
-      <driver-ref>mysql</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://173.194.251.37:3306</jdbc-url>
-      <driver-properties>
-        <property name="zeroDateTimeBehavior" value="convertToNull" />
-        <property name="tinyInt1isBit" value="false" />
-        <property name="characterEncoding" value="utf8" />
-        <property name="characterSetResults" value="utf8" />
-        <property name="yearIsDateType" value="false" />
-      </driver-properties>
-      <libraries />
-    </data-source>
+  <component name="DataSourceManagerImpl" format="xml" hash="478388688">
     <data-source source="LOCAL" name="TravBud" uuid="ef7f3e43-6681-46ac-a4dd-f47f642f8a0d">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
