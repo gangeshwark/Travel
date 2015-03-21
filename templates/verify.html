@@ -7,11 +7,6 @@
 </head>
 <body>
 {{ title }}
-{% for e in list %}
-    {{ e[0] }}
-    {{ e[1] }}
-    {{ e[2] }}
-{% endfor %}
-
+<a href="{{ url_for('upload') }}">Upload</a>
 </body>
 </html>

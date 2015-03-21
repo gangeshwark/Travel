@@ -1,8 +1,11 @@
 import os
 
 import MySQLdb
+from google.appengine.ext import blobstore
 
-from flask import Flask, request
+from werkzeug.http import parse_options_header
+
+from flask import Flask, request, make_response
 from flask.templating import render_template
 
 env = os.getenv('SERVER_SOFTWARE')
@@ -54,6 +57,30 @@ def login():
 
     db.close()
     return render_template('verify.html', title=msg, list=list1)
+
+
+@app.route('/upload')
+def upload():
+    uploadUri = blobstore.create_upload_url('/submit')
+    return render_template('upload.html', uploadUri=uploadUri)
+
+
+@app.route("/submit", methods=['POST'])
+def submit():
+    if request.method == 'POST':
+        f = request.files['file']
+        header = f.headers['Content-Type']
+        parsed_header = parse_options_header(header)
+        blob_key = parsed_header[1]['blob-key']
+        return blob_key
+
+
+@app.route("/img/<bkey>")
+def img(bkey):
+    blob_info = blobstore.get(bkey)
+    response = make_response(blob_info.open().read())
+    response.headers['Content-Type'] = blob_info.content_type
+    return response
 
 
 if __name__ == '__main__':
