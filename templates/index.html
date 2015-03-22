@@ -1,39 +1,461 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title>Trav BUD</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-    <link type="text/css" rel="stylesheet" href="/static/css/style.css"/>
-    <link type="text/css" rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
+<head>
+<meta charset="utf-8">
+<!--CSS INCLUDES-->
+<!--1. Bootstrap CSS LOW PREFERENCE-->
+<link type="text/css" rel="stylesheet" href="static/css/bootstrap.css">
+<!--2. Template CSS HIGH PREFERENCE-->
+<link type="text/css" rel="stylesheet" href="static/css/styles.css">
 
+<link type="text/css" rel="stylesheet" href="static/jquery-ui-1.11.4.custom/jquery-ui-1.11.4.custom/jquery-ui.css">
+<link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
+<!--FONT INCLUDES= FONT AWESOME 4.2.0-->
+<link type="text/css" rel="stylesheet" href="static/fonts/font-awesome-4.3.0/css/font-awesome.css">
+<link type="text/css" href="/static/themes/jquery.videobackground.css" rel="stylesheet" media="screen">
+<script src="static/jquery-ui-1.11.4.custom/jquery-ui-1.11.4.custom/jquery-ui.js"></script>
+<script src="static/js/bootstrap.js"></script>
+<script src="static/js/jquery-1.11.2.js"></script><script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="static/external/jquery.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="static/script/jquery.videobackground.js"></script>
+<script src="static/typed.js-master/js/typed.js"></script>
+<title>TravBud</title>
+<style>
+.btn-default {
+  color:#fff;
+  font-weight:900;
+  border: 2px solid #fff;
+  background-color: rgba(0, 0, 0, 0);
+  border-color: #fff;
+  }
+</style>
 </head>
+
 <body>
+<!--THIS IS FOR BACKGROUND LOOP VIDEO
+-->
+<script>
+			$(document).ready(function() {
+				//$('dl').toggle();
+				/*$('h2').bind('click', function(event) {
+					event.preventDefault();
+					$(this).next('dl').slideToggle(500, function() {
+						$('.video-background').videobackground('resize');
+					});
+				});*/
+				$('body').prepend('<div class="video-background"></div>');
+				$('.video-background').videobackground({
+					videoSource: [['/static/assets/bgs/bg4.mp4', 'video/mp4']],
+					controlPosition: '#main',
+					poster: '',
+					loop:true,
+					muted:true,
+					loadedCallback: function() {
+						$(this).videobackground('mute');
+					}
+				});
+                 $("#upImg").click(function () {
+					    $("#FileInput").trigger('click');
+					});
+                //i will add submitting of all the 3 forms of data
+        $(".travellogin").submit(function(e) {
+                    console.log("Help me");
+        e.preventDefault();
+        var erdata = {
+          "input": "Sign In"
+        };
+        erdata = $(this).serialize()+ "&" + $.param(erdata);
+        $.ajax({
+          type: "POST",
+          dataType: "json",
+          url: "/login", //Relative or absolute path to response.php file
+          data: erdata,
+          success: function(sudata) {
+              var e1 = sudata['results'];
+              var e2 = e1[0];
+              if(e2['result']==1)
+                window.location = "http://travbud2015.appspot.com/home";
 
-Hello user
+            console.log(window.location.href);
+          },
+          error: function(jqXHR, textStatus, errorThrown) {
+                alert("something is not working ")
+            }
+        });
+    });
+     $(".travelprimarysignup").submit(function(e) {
+        e.preventDefault();
+        var erdata = {
+          "input": "Primary"
+        };
+        erdata = $(this).serialize()+ "&" + $.param(erdata);
+        $.ajax({
+          type: "POST",
+          dataType: "json",
+          url: "/signup", //Relative or absolute path to response.php file
+          data: erdata,
+          success: function(sudata) {
+              var e1 = sudata['results'];
+              var e2 = e1[0];
+              var error_msg = e2['reason'];
+              if(e2['result']==1){
+                    tosecondary();
+              }
+              else if(e2['result'] == -1){
+                   console.log(error_msg)
 
-<form action="{{ url_for('login') }}" method="POST" class="travellogin">
-    <input type="text" name="username"/>
-    <input type="password" name="password"/>
-    <button type="submit">LOGIN</button>
-</form>
+              }
+          },
+            error: function(jqXHR, textStatus, errorThrown) {
+                alert("something is not working ")
+            }
+        });
+            });
 
-<form action="{{ url_for('signup_1') }}" method="post" class="travelprimarysignup">
-    <input type="email" name="email" placeholder="email ID">
-    <input type="text" name="name" placeholder="Your name">
-    <input type="password" name="password" placeholder="Password">
-    <input type="password" name="rpassword" placeholder="Repeat Password">
-    <button type="submit">Proceed</button>
-</form>
+function tosecondary() {
+            var name22 = $('#usernameUp').val();
+            console.log(name22);
+            $("#name2Page").text("Hi " + name22 + " ! Tell us a bit more about you.");
+            $("#login").hide();
+            $("#signup").hide();
+            $("#signup2Page").show();
+            $("#signInButt").hide();
+            $("#signUpButt").hide();
+            $("#signupButton").hide();
+            $("#signinButton").hide();
+            $("#signUpButt2").show();
+            $("#loginKaBhai").hide();
+        }
+    $(".travelsecondarysignup").submit(function(e) {
+        e.preventDefault();
+        var erdata = {
+          "input": "Secondary"
+        };
+        erdata = $(this).serialize()+ "&" + $.param(erdata);
+        $.ajax({
+          type: "POST",
+          dataType: "json",
+          url: "/signup", //Relative or absolute path to response.php file
+          data: erdata,
+          success: function(sudata) {
+            var e1 = sudata['results'];
+              var e2 = e1[0];
+              var error_msg = e2['reason'];
+              if(e2['result']==1){
+                    console.log(window.location.hostname);
+                    window.location = "http://travbud2015.appspot.com/home" ;
+              }
+              else if(e2['result'] == -1){
+                   console.log(error_msg)
+              }
+          },
+          error: function(jqXHR, textStatus, errorThrown) {
+                alert("something is not working ")
+            }
+        });
+    });
+                });
+</script>
+<div class="container-fluid">
+<!--THIS IS THE LOGO THING
+TRAVBUD ROCKS
+GDG CODE PURSUIT 2015-->
+ 
+  <div class="row">
+  	<div class=" col-md-4"></div>
+        
+    	<div class="logoDiv midAlign col-xs-12 col-md-4 homeText">
+        <div style="font-size:2.5vw;font-weight:900; color:#fff;"><span style="text-decoration:overline;">TRA</span><div style="padding-bottom:15px;display:inline;font-size:55px;">V</div><span style="text-decoration:overline;">BUD</span></div>
+        
 
-<form action="{{ url_for('signup_2') }}" method="post" class="travelsecondarysignup">
-    <select name="sex">
-        <option value="M">Male</option>
-        <option value="F">Female</option>
-    </select>
-    <input type="number" min="10" max="95"/>
-    <button type="submit">I am all set</button>
-</form>
+        <div style="font-size:1.5vw;font-weight:700; color:#fff;"><div class="element" style="display:inline;"> </div></div>
+        </div>
+        
+        <div class=" col-md-2"></div>
+        <div class="logoDiv col-md-2"><br><a href="#" id="signupButton" type="submit"  class="btn btn-default btn-lg">Sign Up</a>
+            <a href="#" id="signinButton" type="submit"  class="btn btn-default btn-lg">Sign In</a></div>
+  </div>
+  <div class="row">
+  	<div class=" col-md-4"></div>
+        
+    	<div id="login"  class="midAlign col-xs-12 col-md-4 homeText">
+        <br>
+            <form action="{{ url_for('login') }}" method="post" class="travellogin">
+        			<p><input type="email" class="form-control inputBox" id="usernameIn"  name="username" placeholder="Email" />
+                    </p><br>
+                    <p><input type="password" class="form-control inputBox" id="passwordIn" name="password" placeholder="Password" />
+                    </p>
+                 <p><button type="submit" id="signInButt" class="btn btn-default btn-lg">Sign in</button>
+                </form>
+				
+			
+        </div>
+      <form action="{{ url_for('signup') }}" method="post" class="travelprimarysignup">
+        <div id="signup" class="midAlign col-xs-12 col-md-4 homeText">
+        <br>
+        			<p><input type="text" class="form-control inputBox" id="usernameUp" name="username" placeholder="Name" />
+                                </p>
+                                <p><input type="email" class="form-control inputBox" id="emailUp" name="email" placeholder="Email" />
+                                </p>
+                                <p><input type="password" class="form-control inputBox" id="passwordUp"  name="password" placeholder="Password" />
+                                </p>
+                                <p><input type="password" class="form-control inputBox" id="passwordUp"  name="rpassword" placeholder="Confirm Password" />
+                                </p>
+              <button value="Primary" name="input1" type="submit" id="signUpButt"  class="btn btn-default btn-lg">Continue</button>
+        </div>
+          </form>
+        
+        <!--PAGE 2-->
+      <form action="{{ url_for('signup') }}" method="POST" class="travelsecondarysignup">
+                    <div id="signup2Page" class="midAlign col-xs-12 col-md-4 homeText">
+                     <br>
+        			<p style="font-size:1.5vw;font-weight:700; color:#fff;" id="name2Page"></p>
+                                <br>
+                                <p><input type="text" name="age" class="form-control inputBox" id="ageUp"  placeholder="Age" />
+                                </p>
+                                <br>
+                                <p style="font-size:1.5vw;font-weight:700; color:#fff; text-align:left; " class="col-md-4">
+                                <label class="radio-inline">
+                                  <input type="radio" name="sex" id="inlineRadio1" value="M"> <i class="fa fa-male"></i>
+                                </label>
+                                <label class="radio-inline">
+                                  <input type="radio" name="sex" id="inlineRadio2" value="F"> <i class="fa fa-female"></i>
+                                </label>
+                                
+                                </p>
+                                <p style="font-size:1.5vw;font-weight:700; color:#fff; text-align:right; " class="col-md-8 rightAlign">
+                                <a href="#" id="upImg"><i class="fa fa-camera-retro"></i></a> Upload Your Pic
+                                </p>
+                                <input type="file" accept="image/*" name="file1" id="FileInput" style="cursor: pointer;  display: none"/>
+
+                                <br>
+                                <p style="font-size:1.5vw;font-weight:700; color:#000; text-align:left;">
+                                <input type="text" class="form-control inputBox visitedenter" name="visited" placeholder="Tell the places you have travelled" />
+                                <!--<ul class="results" >
+                                      <div id="recomoffset"></div>
+                                </ul>-->
+                                </p>
+                                <script>
+				$(document).ready(function() {
+					var control = 0;
+					var preventry = "";
+					window.setInterval(function(){
+					   var m = $(".visitedenter").val();
+					  if(m.length > 4){
+					    if(preventry != m){
+					  console.log("ZERO");
+					  if(control == 0){
+					      control = 1;
+					      preventry = m;
+						$.ajax({
+						  url: "https://api.fullcontact.com/v2/address/locationEnrichment.json?place="+m+"&apiKey=d7b0b8cc5b89993a"
+						  }).then(function(data) {
+						    walk(data['locations']);
+						    console.log(data[location]);
+						     control = 0;
+						  });
+						control = 0;
+					       }
+					     }
+					    }        
+					},4000);
+
+				var noofentry = 1;
+				function walk(data){
+				  var entry = "";
+				  
+				  for(var key in data){
+				    noofentry = noofentry + 1; 
+					      if (data.hasOwnProperty(key)) {
+						  var val = data[key];
+						  var continent = val['continent'];
+						  var normalised = val['normalizedLocation'];
+						  var totalocation = normalised+", "+continent;
+						  console.log(totalocation);
+						 // $(".results").empty();
+						  //entry = entry+'<li ><a class="jagah" href="">'+totalocation+'</a></li>';
+						  //$(entry).insertAfter("#recomoffset");
+						  // for(var key1 in val){
+						  //   var continent = 
+						  //   console.log(key1+"::"+val[key1]);
+						  // }
+						  // console.log(":::::::::::::::::::::::");
+						  entry = entry+'<li id=places'+noofentry+'><a class="jagah">'+totalocation+'</a></li>';
+						  noofentry = noofentry + 1;
+						
+					    }
+					    $('.results').html(entry);
+						
+				}
+				}
+				
+				});
+
+                                </script>
+                                
+                                <p style="font-size:1.5vw;font-weight:700; color:#000; text-align:left;">
+                                <input type="text" class="form-control inputBox visitedenter" name="notvisited" placeholder="Places you would like to travel" />
+                                <!--<ul class="results" >
+                                      <div id="recomoffset"></div>
+                                </ul>-->
+                                </p>
+				<button value="Secondary" name="input1" type="submit" id="signUpButt2"  class="btn btn-default btn-lg">Sign Up</button>
+			
+        </div>
+          </form>
+        <!--PAGE 2 ENDS-->
+        <script>
+	$(document).ready(function() {
+  $(function(){
+      $(".element").typed({
+        strings: ["The World With You . . . ", "Lets Travel Socially . . . ", "TRAVEL | EXPLORE | SHARE"],
+        typeSpeed: 0
+      });
+  });
+  });
+</script>
+        <script>
+	$(document).ready(function() {
+        $("#login").show();
+        $("#signup").hide();
+        $("#signupButton").show();
+        $("#signinButton").hide();
+        $("#signInButt").show();
+        $("#signUpButt").hide();
+        $("#signup2Page").hide();
+        $("#signUpButt2").hide();
+        $("#signupButton").click(function () {
+            $("#login").hide();
+            $("#signup").show();
+            $("#signInButt").hide();
+            $("#signUpButt").show();
+            $("#signupButton").hide();
+            $("#signinButton").show();
+            $("#signUpButt2").hide();
+            $("#loginKaBhai").hide();
+            console.log("Working");
+        });
+        $("#signinButton").click(function () {
+            $("#login").show();
+            $("#signup").hide();
+            $("#signInButt").show();
+            $("#signUpButt").hide();
+            $("#signupButton").show();
+            $("#signinButton").hide();
+            console.log("Working2");
+            $("#signUpButt2").hide();
+            $("#loginKaBhai").hide();
+        });
+
+    });
+
+	</script>
+        <div class=" col-md-4"></div>
+  </div>
+  <div class="row">
+  	<div class=" col-md-4"></div>
+        
+    	<div class=" col-xs-12 col-md-2 homeText">
+        <br>
+        			
+                                <p id="loginKaBhai" style="font-weight:900;color:#fff;font-size:18px;margin-top:8px;"><a href="#">Trouble Logging In ?</a>
+                                </p>
+				
+			
+        </div>
+        <div class="rightAlign col-xs-12 col-md-2 homeText">
+        <br>
+        			
+
+
+
+                                </p>
+				
+			
+        </div>
+        
+        <div class=" col-md-4"></div>
+  </div>
+  <!--THIS IS FOOTER-->
+  <!--<div class="footer1 row" style="">
+  	<div class=" col-md-4">
+        
+        Made at Code Pursuit 2015 </div>
+        
+    	<div class="midAlign col-xs-12 col-md-4">
+        
+        <P>sos@travbud.com</P>
+        
+        </div>
+        
+        <div class="rightAlign col-md-4">
+        
+        <P>Privacy Policy</P>
+        </div>
+  </div>-->
+</div>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Made with <i class="fa fa-heart"></i> at Code Pursuit 2015</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a class="navbar-brand" href="#">Quad Code <i class="fa fa-terminal typed-cursor"></i> </a></li>
+
+      </ul>
+
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
 </body>
+<!--<script src="js/classie.js"></script>
+		<script>
+			(function() {
+				// trim polyfill : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim
+				if (!String.prototype.trim) {
+					(function() {
+						// Make sure we trim BOM and NBSP
+						var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
+						String.prototype.trim = function() {
+							return this.replace(rtrim, '');
+						};
+					})();
+				}
+
+				[].slice.call( document.querySelectorAll( 'input.input__field' ) ).forEach( function( inputEl ) {
+					// in case the input is already filled..
+					if( inputEl.value.trim() !== '' ) {
+						classie.add( inputEl.parentNode, 'input--filled' );
+					}
+
+					// events:
+					inputEl.addEventListener( 'focus', onInputFocus );
+					inputEl.addEventListener( 'blur', onInputBlur );
+				} );
+
+				function onInputFocus( ev ) {
+					classie.add( ev.target.parentNode, 'input--filled' );
+				}
+
+				function onInputBlur( ev ) {
+					if( ev.target.value.trim() === '' ) {
+						classie.remove( ev.target.parentNode, 'input--filled' );
+					}
+				}
+			})();
+		</script>-->
+                <!--DUDES ARE HERE-->
+                
 </html>

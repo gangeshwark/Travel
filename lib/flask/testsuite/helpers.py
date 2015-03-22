@@ -206,10 +206,10 @@ class SendfileTestCase(FlaskTestCase):
     def test_send_file_regular(self):
         app = flask.Flask(__name__)
         with app.test_request_context():
-            rv = flask.send_file('static/index.html')
+            rv = flask.send_file('static/index1.html')
             self.assert_true(rv.direct_passthrough)
             self.assert_equal(rv.mimetype, 'text/html')
-            with app.open_resource('static/index.html') as f:
+            with app.open_resource('static/index1.html') as f:
                 rv.direct_passthrough = False
                 self.assert_equal(rv.data, f.read())
             rv.close()
@@ -218,11 +218,11 @@ class SendfileTestCase(FlaskTestCase):
         app = flask.Flask(__name__)
         app.use_x_sendfile = True
         with app.test_request_context():
-            rv = flask.send_file('static/index.html')
+            rv = flask.send_file('static/index1.html')
             self.assert_true(rv.direct_passthrough)
             self.assert_in('x-sendfile', rv.headers)
             self.assert_equal(rv.headers['x-sendfile'],
-                os.path.join(app.root_path, 'static/index.html'))
+                os.path.join(app.root_path, 'static/index1.html'))
             self.assert_equal(rv.mimetype, 'text/html')
             rv.close()
 
@@ -230,10 +230,10 @@ class SendfileTestCase(FlaskTestCase):
         app = flask.Flask(__name__)
         with catch_warnings() as captured:
             with app.test_request_context():
-                f = open(os.path.join(app.root_path, 'static/index.html'))
+                f = open(os.path.join(app.root_path, 'static/index1.html'))
                 rv = flask.send_file(f)
                 rv.direct_passthrough = False
-                with app.open_resource('static/index.html') as f:
+                with app.open_resource('static/index1.html') as f:
                     self.assert_equal(rv.data, f.read())
                 self.assert_equal(rv.mimetype, 'text/html')
                 rv.close()
@@ -243,12 +243,12 @@ class SendfileTestCase(FlaskTestCase):
         app.use_x_sendfile = True
         with catch_warnings() as captured:
             with app.test_request_context():
-                f = open(os.path.join(app.root_path, 'static/index.html'))
+                f = open(os.path.join(app.root_path, 'static/index1.html'))
                 rv = flask.send_file(f)
                 self.assert_equal(rv.mimetype, 'text/html')
                 self.assert_in('x-sendfile', rv.headers)
                 self.assert_equal(rv.headers['x-sendfile'],
-                    os.path.join(app.root_path, 'static/index.html'))
+                    os.path.join(app.root_path, 'static/index1.html'))
                 rv.close()
             # mimetypes + etag
             self.assert_equal(len(captured), 2)
@@ -288,7 +288,7 @@ class SendfileTestCase(FlaskTestCase):
         app = flask.Flask(__name__)
         with catch_warnings() as captured:
             with app.test_request_context():
-                f = open(os.path.join(app.root_path, 'static/index.html'))
+                f = open(os.path.join(app.root_path, 'static/index1.html'))
                 rv = flask.send_file(f, as_attachment=True)
                 value, options = parse_options_header(rv.headers['Content-Disposition'])
                 self.assert_equal(value, 'attachment')
@@ -297,11 +297,11 @@ class SendfileTestCase(FlaskTestCase):
             self.assert_equal(len(captured), 2)
 
         with app.test_request_context():
-            self.assert_equal(options['filename'], 'index.html')
-            rv = flask.send_file('static/index.html', as_attachment=True)
+            self.assert_equal(options['filename'], 'index1.html')
+            rv = flask.send_file('static/index1.html', as_attachment=True)
             value, options = parse_options_header(rv.headers['Content-Disposition'])
             self.assert_equal(value, 'attachment')
-            self.assert_equal(options['filename'], 'index.html')
+            self.assert_equal(options['filename'], 'index1.html')
             rv.close()
 
         with app.test_request_context():
@@ -319,24 +319,24 @@ class SendfileTestCase(FlaskTestCase):
         # default cache timeout is 12 hours
         with app.test_request_context():
             # Test with static file handler.
-            rv = app.send_static_file('index.html')
+            rv = app.send_static_file('index1.html')
             cc = parse_cache_control_header(rv.headers['Cache-Control'])
             self.assert_equal(cc.max_age, 12 * 60 * 60)
             rv.close()
             # Test again with direct use of send_file utility.
-            rv = flask.send_file('static/index.html')
+            rv = flask.send_file('static/index1.html')
             cc = parse_cache_control_header(rv.headers['Cache-Control'])
             self.assert_equal(cc.max_age, 12 * 60 * 60)
             rv.close()
         app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 3600
         with app.test_request_context():
             # Test with static file handler.
-            rv = app.send_static_file('index.html')
+            rv = app.send_static_file('index1.html')
             cc = parse_cache_control_header(rv.headers['Cache-Control'])
             self.assert_equal(cc.max_age, 3600)
             rv.close()
             # Test again with direct use of send_file utility.
-            rv = flask.send_file('static/index.html')
+            rv = flask.send_file('static/index1.html')
             cc = parse_cache_control_header(rv.headers['Cache-Control'])
             self.assert_equal(cc.max_age, 3600)
             rv.close()
@@ -346,12 +346,12 @@ class SendfileTestCase(FlaskTestCase):
         app = StaticFileApp(__name__)
         with app.test_request_context():
             # Test with static file handler.
-            rv = app.send_static_file('index.html')
+            rv = app.send_static_file('index1.html')
             cc = parse_cache_control_header(rv.headers['Cache-Control'])
             self.assert_equal(cc.max_age, 10)
             rv.close()
             # Test again with direct use of send_file utility.
-            rv = flask.send_file('static/index.html')
+            rv = flask.send_file('static/index1.html')
             cc = parse_cache_control_header(rv.headers['Cache-Control'])
             self.assert_equal(cc.max_age, 10)
             rv.close()

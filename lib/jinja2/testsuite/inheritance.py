@@ -178,7 +178,7 @@ class InheritanceTestCase(JinjaTestCase):
             'layout.html': '''
             {% block useless %}{% endblock %}
             ''',
-            'index.html': '''
+            'index1.html': '''
             {%- extends 'layout.html' %}
             {% from 'helpers.html' import foo with context %}
             {% block useless %}
@@ -193,7 +193,7 @@ class InheritanceTestCase(JinjaTestCase):
             {% macro foo(x) %}{{ the_foo + x }}{% endmacro %}
             '''
         }))
-        rv = env.get_template('index.html').render(the_foo=42).split()
+        rv = env.get_template('index1.html').render(the_foo=42).split()
         assert rv == ['43', '44', '45']
 
 

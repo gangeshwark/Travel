@@ -1,0 +1,130 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<!--CSS INCLUDES-->
+<!--1. Bootstrap CSS LOW PREFERENCE-->
+<link rel="stylesheet" href="static/css/bootstrap.css">
+<!--2. Template CSS HIGH PREFERENCE-->
+<link rel="stylesheet" href="static/css/styles.css">
+<link rel="stylesheet" href="static/jquery-ui-1.11.4.custom/jquery-ui-1.11.4.custom/jquery-ui.css">
+<link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
+<!--FONT INCLUDES= FONT AWESOME 4.2.0-->
+<link rel="stylesheet" href="static/fonts/font-awesome-4.3.0/css/font-awesome.css">
+<link href="static/themes/jquery.videobackground.css" rel="stylesheet" media="screen">
+<!--CSS FOR INPUT STYLES-->
+<!--<link rel="stylesheet" type="text/css" href="css2/normalize.css" />
+<link rel="stylesheet" type="text/css" href="css2/demo.css" />
+<link rel="stylesheet" type="text/css" href="css2/set1.css" />
+<link rel="stylesheet" type="text/css" href="css2/set2.css" />-->
+<!--JS INCLUDES-->
+<!--Jquery 1.11.2-->
+<script src="static/jquery-ui-1.11.4.custom/jquery-ui-1.11.4.custom/jquery-ui.js"></script>
+<!--Bootstrap Js-->
+<script src="static/js/bootstrap.js"></script>
+<!--PAGE CSS TO OVERRIDE INCLUDES CSS-->
+<script src="static/js/jquery-1.11.2.js"></script>
+<!--DUDE IMPORT -->
+<script src="static/external/jquery.js"></script>
+<script src="static/script/jquery.videobackground.js"></script>
+<title>People</title>
+<style>
+.container-fluid>.btn-default {
+  color:#000;
+  font-weight:900;
+  border: 1px solid #ccc;
+  background-color: rgba(0, 0, 0, 0);
+  border-color: #000;
+  border-radius: 7px;
+  box-shadow: 1px 1px 4px #000
+  }
+ .container-fluid>.btn-default:hover, .container-fluid>.btn-default:focus {
+  color:#000;
+  font-weight:900;
+  border: 1px solid #ccc;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-color: #000;
+  border-radius: 7px;
+   box-shadow: 1px 1px 4px #000;
+  }
+    a{
+        color:#000;
+    }
+</style>
+</head>
+
+
+<body>
+<!--TATHAGAT START-->
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"><div style="font-size:1.5vw;font-weight:900; color:#CCC;display:inline;"><span style="text-decoration:overline;">TRA</span><div style="padding-bottom:15px;display:inline;font-size:32px;">V</div><span style="text-decoration:overline;">BUD</span></div></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+
+      </ul>
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+      <li><a href="#">People</a></li>
+        <li><a href="#">Profile</a></li>
+        <li class="active"><a href="#">Interests</a></li>
+        <li><a href="#">Logout</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<!--TATHAGAT END-->
+<div class="container-fluid">
+{% for k in users %}
+<div class="row">
+<div class="col-md-12" style="font-size:2.5vw;font-weight:900; color:#000;">
+<a href="profile?userid={{ k[0] }}">
+{{ k[1] }}</a><br/>
+</div></div><br><br>
+{% endfor %}
+</div>
+<!--TATHAGAT START-->
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Made with <i class="fa fa-heart"></i> at Code Pursuit 2015</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a class="navbar-brand" href="#">Quad Code <i class="fa fa-terminal typed-cursor"></i> </a></li>
+
+      </ul>
+
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<!--TATHAGAT END-->
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+		<title>Profile</title>
+		
+		<link rel="shortcut icon" href="../favicon.ico">
+		<link rel="stylesheet" type="text/css" href="static/css/style.css" />
+		<link rel="stylesheet" type="text/css" href="static/css/bootstrap.css" />
+        <link rel="stylesheet" href="static/fonts/font-awesome-4.3.0/css/font-awesome.css">
+		<script src="static/js/modernizr.custom.63321.js"></script>
+        <script src="static/js/bootstrap.js"></script>
+	</head>
+	<body>
+        <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"><div style="font-size:1.5vw;font-weight:900; color:#CCC;display:inline;"><span style="text-decoration:overline;">TRA</span><div style="padding-bottom:15px;display:inline;font-size:32px;">V</div><span style="text-decoration:overline;">BUD</span></div></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        
+        
+      </ul>
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Profile</a></li>
+        <li class="active"><a href="#">Interests</a></li>
+        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+		<div class="container">	
+			
+                                 
+                                
+			<div class="row" style="margin-top:10px;"> 
+			
+			<div class="col-md-2" style="text-align:center;position:fixed;left:5%;top:35%;">
+                        	<div class=" pic"></div><br>
+                                <p>{{ name }}</p>
+                                <p><a><a href="/planmytravel" type="submit" class="btn btn-default">Trip Plan</a></a></p>
+                                <p><a><a href="/users" type="submit" class="btn btn-default">All Users</a></a></p>
+            </div>
+			<div class="col-md-10" style="text-align:center;position:absolute;right:0%;">
+			<section class="main">
+
+				<ul class="timeline">
+
+					<li class="event">
+						<input type="radio" name="tl-group" checked/>
+						<label></label>
+						<div class="thumb user-4"><img src="static/img/tndp.jpg" width="100px" height="100px" alt="mohit" style="			-moz-border-radius: 100px;
+    -webkit-border-radius: 150px;border-radius: 100px;"/><span>Tathagat N</span></div>
+						<div class="content-perspective">
+							<div class="content">
+								<div class="content-inner">
+									<h3>Great stuff!!!</h3>
+									<p>Great Tacos at taco bell @MantriSquare #justtoogood </p>
+								</div>
+							</div>
+						</div>
+					</li>
+
+					<li class="event">
+						
+						
+						
+						
+							<div class="content">
+								<div class="content-inner" style="text-align:left;">
+									<img src="static/img/SW_Blake+Bronstad.jpg" width="250px" height="150px" alt="mohit" />
+                                                                        &nbsp; Ohhhhh Ireland !!
+								</div>
+							</div>
+						
+					</li>
+                                        
+                       <li class="event">
+						<input type="radio" name="tl-group" checked/>
+						<label></label>
+						<div class="thumb user-6"><img src="static/img/nkdp.jpg" width="100px" height="100px" alt="mohit" style="			-moz-border-radius: 100px;
+    -webkit-border-radius: 150px;border-radius: 100px;"/><span>Neel Kirit</span></div>
+						<div class="content-perspective">
+							<div class="content">
+								<div class="content-inner">
+									<h3>Yeaaaahhh!!!</h3>
+									<p>Loved backpacking across Europe. Simply awesome </p>
+								</div>
+							</div>
+						</div>
+					</li>
+                                        
+                                        <li class="event">
+						
+						
+							<div class="content">
+								<div class="content-inner" style="text-align:left;">
+									<img src="static/img/tumblr_nkyjwaQhOu1sfie3io1_1280.jpg" width="250px" height="150px" alt="mohit" /> &nbsp; Awesome Views at Paris
+								</div>
+								
+							</div>
+						
+					</li>
+					
+					<li class="event">
+						<input type="radio" name="tl-group" checked/>
+						<label></label>
+						<div class="thumb user-6"><img src="static/img/tkdp.jpg" width="100px" height="100px" alt="mohit" style="			-moz-border-radius: 100px;
+    -webkit-border-radius: 150px;border-radius: 100px;"/><span>Tushar K</span></div>
+						<div class="content-perspective">
+							<div class="content">
+								<div class="content-inner">
+									<h3>Enjoying time......</h3>
+									<p>Exams done. Time to hit the beach </p>
+								</div>
+							</div>
+						</div>
+					</li>
+					
+					<li class="event">
+						
+						
+							<div class="content">
+								<div class="content-inner" style="text-align:left;">
+									<img src="static/img/marinadelray.jpg" width="250px" height="150px" alt="mohit" />
+                                                                        &nbsp; Awesome Places to visit
+								</div>
+							</div>
+						
+					</li>
+
+				</ul>
+			</section>
+                        </div>
+                        </div>
+
+		</div><!-- /container -->
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Made with <i class="fa fa-heart"></i> at Code Pursuit 2015</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a class="navbar-brand" href="#">Quad Code <i class="fa fa-terminal typed-cursor"></i> </a></li>
+        
+      </ul>
+      
+      
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+	</body>
+</html>

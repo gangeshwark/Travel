@@ -407,7 +407,7 @@ class BlueprintTestCase(FlaskTestCase):
                 if app.config['SEND_FILE_MAX_AGE_DEFAULT'] == unexpected_max_age:
                     unexpected_max_age = 7200
                 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = unexpected_max_age
-                rv = blueprint.send_static_file('index.html')
+                rv = blueprint.send_static_file('index1.html')
                 cc = parse_cache_control_header(rv.headers['Cache-Control'])
                 self.assert_equal(cc.max_age, 100)
                 rv.close()
@@ -417,8 +417,8 @@ class BlueprintTestCase(FlaskTestCase):
     def test_templates_list(self):
         from blueprintapp import app
         templates = sorted(app.jinja_env.list_templates())
-        self.assert_equal(templates, ['admin/index.html',
-                                     'frontend/index.html'])
+        self.assert_equal(templates, ['admin/index1.html',
+                                     'frontend/index1.html'])
 
     def test_dotted_names(self):
         frontend = flask.Blueprint('myapp.frontend', __name__)

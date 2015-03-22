@@ -1,0 +1,325 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="static/css/bootstrap.css">
+<link rel="stylesheet" href="static/css/styles.css">
+<link rel="stylesheet" href="static/jquery-ui-1.11.4.custom/jquery-ui-1.11.4.custom/jquery-ui.css">
+<link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="static/fonts/font-awesome-4.3.0/css/font-awesome.css">
+<script src="static/jquery-ui-1.11.4.custom/jquery-ui-1.11.4.custom/jquery-ui.js"></script>
+<script src="static/js/bootstrap.js"></script>
+<script src="static/js/jquery-1.11.2.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
+<title>Plan Trip</title>
+<style>
+.form-control {
+  display: block;
+  width: 100%;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555 !important;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+       -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+          transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+.form-control:focus {
+  border-color: #66afe9;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+          box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+}
+::-webkit-input-placeholder {
+   color: #000 !important;
+   font-weight:500; 
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: #000 !important;
+   font-weight:500;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: #000 !important;
+   font-weight:500;   
+}
+
+:-ms-input-placeholder {  
+   color: #000 !important;
+   font-weight:500; 
+}
+a:focus,a:hover{
+	font-size:18px;
+	list-style-type: none;
+	color:#ccc;
+	border:thin;
+	text-align:left;
+}
+</style>
+</head>
+
+<body>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"><div style="font-size:1.5vw;font-weight:900; color:#CCC;display:inline;"><span style="text-decoration:overline;">TRA</span><div style="padding-bottom:15px;display:inline;font-size:32px;">V</div><span style="text-decoration:overline;">BUD</span></div></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        
+        
+      </ul>
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Profile</a></li>
+        <li class="active"><a href="#">Interests</a></li>
+        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<div class="container-fluid">
+<form>
+  <div class="row">
+    	 <div class="col-md-3"></div>
+          <div class="col-md-6">
+          	
+                
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Give your Trip a Name</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Coorg Trekk v15">
+                  </div>
+                  <div class="form-group">
+                    Enter Your Most Favourite Choices !
+                  </div>
+           </div>
+           <div class="col-md-3"></div>
+   </div>
+    <div class="row">
+    	 <div class="col-md-3"></div>
+         <div class="col-md-3">
+                  <h3>Lesiure</h3>
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="optionsRadios1" id="SunbatheRadios1" value="Sunbathe"> Sunbathe
+                    </label>
+                  </div>
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="optionsRadios1" id="CampingRadios1" value="Camping"> Camping
+                    </label>
+                  </div>
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="optionsRadios1" id="AdventureRadios1" value="Adventure"> Adventure Sports
+                    </label>
+                  </div>
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="optionsRadios1" id="SafariRadios1" value="Safari"> Safari
+                    </label>
+                  </div>
+                  <h3>Terrains</h3>
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="optionsRadios" id="MountainRadios1" value="Mountain"> Sea
+                    </label>
+                  </div>
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="optionsRadios" id="MountainRadios1" value="Mountain"> Mountain
+                    </label>
+                  </div>
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="optionsRadios" id="ForestRadios1" value="Forest"> Forest
+                    </label>
+                  </div>
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="optionsRadios" id="DesertRadios1" value="Desert"> Desert
+                    </label>
+                  </div>
+                  
+                  <h3>Guide Required</h3>
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="optionsRadios6" id="YesRadios1" value="Yes"> Yes
+                    </label>
+                  </div>
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="optionsRadios6" id="NoRadios1" value="No"> No
+                    </label>
+                  </div>
+               
+                
+                
+                
+          </div>
+          <div class="col-md-3">
+          	<h3>Purpose</h3>
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="optionsRadios2" id="BusinessRadios1" value="Business"> Business
+                    </label>
+                  </div>
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="optionsRadios2" id="VacationRadios1" value="Vacation"> Vacation
+                    </label>
+                  </div>
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="optionsRadios2" id="FamilyRadios1" value="Family"> Family
+                    </label>
+                  </div>
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="optionsRadios2" id="OtherRadios1" value="Other"> Other
+                    </label>
+                  </div>
+                  
+                  <h3>Partner</h3>
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="optionsRadios3" id="RequiredRadios1" value="Required"> Required
+                    </label>
+                  </div>
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="optionsRadios3" id="NotRequiredRadios1" value="Not Required"> Not Required
+                    </label>
+                  </div>
+                  
+                  <h3>Duration</h3>
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="optionsRadios4" id="1weekRadios1" value="<1 week"> &lt;1 week
+                    </label>
+                  </div>
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="optionsRadios4" id="1-2weeksRadios1" value="1-2 weeks"> 1-2 weeks
+                    </label>
+                  </div>
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="optionsRadios4" id="2-3weeksRadios1" value="2-3 weeks"> 2-3 weeks
+                    </label>
+                  </div>
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="optionsRadios4" id="3weeksRadios1" value=">3 weeks"> &gt;3 weeks
+                    </label>
+                  </div>
+                  
+          </div>
+          <div class="col-md-3"></div>
+          </div>
+   <div class="row">
+    	 <div class="col-md-3"></div>
+         <div class="col-md-6"><h3>Budget</h3>
+         	<div class="row">
+    			 <div class="col-md-6">
+                 		 <div class="radio">
+                                    <label>
+                                      <input type="radio" name="optionsRadios8" id="1000Radios1" value="1000"> &lt;₹ 1000
+                                    </label>
+                                  </div>
+                                  <div class="radio">
+                                    <label>
+                                      <input type="radio" name="optionsRadios8" id="1001-5000Radios1" value="1001-5000"> ₹ 1001 - ₹ 5000
+                                    </label>
+                                  </div>
+        		 </div>
+          		<div class="col-md-6">
+                                  <div class="radio">
+                                    <label>
+                                      <input type="radio" name="optionsRadios8" id="5000-10000Radios1" value="5000-10000"> ₹ 5001 - ₹ 10000
+                                    </label>
+                                  </div>
+                                  <div class="radio">
+                                    <label>
+                                      <input type="radio" name="optionsRadios8" id="10000Radios1" value="10000"> &gt;₹ 10000
+                                    </label>
+                                  </div>
+           		</div>
+        	</div>
+        </div>
+         <div class="col-md-3"></div>
+   </div>
+   <div class="row">
+    	 <div class="col-md-3"></div>
+          <div class="col-md-6">
+          	
+                
+                  <div class="form-group">
+                    <label for="exampleInputEmail2">And where are you Visiting ?</label>
+                    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Coorg">
+                  </div>
+                  
+           </div>
+           <div class="col-md-3"></div>
+   </div>
+   <div class="row">
+    	 <div class="col-md-3"></div>
+          <div class="midAlign col-md-6">
+          	<input class="btn btn-default" type="submit" value="Submit">
+                
+                  
+                  
+           </div>
+           <div class="col-md-3"></div>
+   </div>
+  
+   </form>
+</div>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Made with <i class="fa fa-heart"></i> at Code Pursuit 2015</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a class="navbar-brand" href="#">Quad Code <i class="fa fa-terminal typed-cursor"></i> </a></li>
+        
+      </ul>
+      
+      
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+</body>
+</html>

@@ -17,12 +17,34 @@ handlers:
 
 # App Engine serves and caches static files contained in the listed directories
 # (and subdirectories). Uncomment and set the directory as needed.
-- url: /static/css
+#- url: templates/static/css/(.*\.css)
+#  static_files: static/css\1
+#  mime_type: "text/css"
+- url: /static/css/
   static_dir: static/css
   mime_type: "text/css"
 
-#- url: templates
-#  static_dir: templates
+- url: /static/external/
+  static_dir: static/external/
+  mime_type: "text/css"
+
+- url: /static/img/
+  static_dir: static/img/
+  mime_type: "image/jpeg"
+
+- url: /static/assests/bgs/(.*\.mp4)
+  static_files: static/assests/bgs/\1
+  upload: static/assests/bgs/(.*\.mp4)
+  mime_type: "video/mp4"
+
+- url: /static/jquery-ui-1.11.4.custom/jquery-ui-1.11.4.custom
+  static_dir: static/jquery-ui-1.11.4.custom/jquery-ui-1.11.4.custom
+  mime_type: "application/javascript"
+
+#- url: /templates/
+#  static_dir: templates/
+#  mime_type: text/html
+
 
 # This handler tells app engine how to route requests to a WSGI application.
 # The script value is in the format <path.to.module>.<wsgi_application>

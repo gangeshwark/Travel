@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Trav BUD</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="/static/css/style.css"/>
+    <link type="text/css" rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
+
+</head>
+<body>
+
+Hello user
+
+<form action="{{ url_for('login') }}" method="POST" class="travellogin">
+    <input type="text" name="username"/>
+    <input type="password" name="password"/>
+    <button type="submit">LOGIN</button>
+</form>
+
+<form action="{{ url_for('signup_1') }}" method="post" class="travelprimarysignup">
+    <input type="email" name="email" placeholder="email ID">
+    <input type="text" name="name" placeholder="Your name">
+    <input type="password" name="password" placeholder="Password">
+    <input type="password" name="rpassword" placeholder="Repeat Password">
+    <button type="submit">Proceed</button>
+</form>
+
+<form action="{{ url_for('signup_2') }}" method="post" class="travelsecondarysignup">
+    <select name="sex">
+        <option value="M">Male</option>
+        <option value="F">Female</option>
+    </select>
+    <input type="number" min="10" max="95"/>
+    <button type="submit">I am all set</button>
+</form>
+</body>
+</html>

@@ -144,12 +144,12 @@ def make_response(*args):
     If view looked like this and you want to add a new header::
 
         def index():
-            return render_template('index.html', foo=42)
+            return render_template('index1.html', foo=42)
 
     You can now do something like this::
 
         def index():
-            response = make_response(render_template('index.html', foo=42))
+            response = make_response(render_template('index1.html', foo=42))
             response.headers['X-Parachutes'] = 'parachutes are cool'
             return response
 
@@ -831,7 +831,7 @@ class _PackageBoundObject(object):
                 /style.css
             /templates
                 /layout.html
-                /index.html
+                /index1.html
 
         If you want to open the `schema.sql` file you would do the
         following::

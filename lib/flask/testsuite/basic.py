@@ -790,12 +790,12 @@ class BasicFunctionalityTestCase(FlaskTestCase):
     def test_static_files(self):
         app = flask.Flask(__name__)
         app.testing = True
-        rv = app.test_client().get('/static/index.html')
+        rv = app.test_client().get('/static/index1.html')
         self.assert_equal(rv.status_code, 200)
         self.assert_equal(rv.data.strip(), b'<h1>Hello World!</h1>')
         with app.test_request_context():
-            self.assert_equal(flask.url_for('static', filename='index.html'),
-                              '/static/index.html')
+            self.assert_equal(flask.url_for('static', filename='index1.html'),
+                              '/static/index1.html')
         rv.close()
 
     def test_none_response(self):

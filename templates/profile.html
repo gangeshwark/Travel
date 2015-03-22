@@ -1,0 +1,328 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script src="static/jquery-ui-1.11.4.custom/jquery-ui-1.11.4.custom/jquery-ui.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
+<title>Profile</title>
+<style>
+@charset "utf-8";
+/* CSS Document */
+body{
+	font-family: 'Josefin Sans', sans-serif;
+	margin-bottom:0px;
+	padding-bottom:0px;
+}
+::-webkit-input-placeholder {
+   color: #fff !important;
+   font-weight:500;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: #fff !important;
+   font-weight:500;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: #fff !important;
+   font-weight:500;
+}
+
+:-ms-input-placeholder {
+   color: #fff !important;
+   font-weight:500;
+}
+.video-background{
+	-webkit-filter:  grayscale(1) opacity(0.9) ;
+	font-family: 'Quicksand', sans-serif;
+}
+.logoDiv{
+	text-align:center;
+	margin-top:5%;
+}
+.midAlign{
+	text-align:center;
+}
+.homeText{
+	color:#000;
+}
+.inputBox{
+	background-color:rgba(0, 0, 0, 0);
+	height:50px;
+	font-weight:700;
+  font-size:24px;
+  color:#fff;
+
+}
+/*TYPING BABY*/
+.typed-cursor{
+    opacity: 1;
+    -webkit-animation: blink 0.7s infinite;
+    -moz-animation: blink 0.7s infinite;
+    animation: blink 0.7s infinite;
+}
+@keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+@-webkit-keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+@-moz-keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+/*TYPING BABY ENDS*/
+  .form-control{
+	    border: 2px solid #fff;
+  }
+.form-control:focus {
+  border-color: #fff;
+  outline-width:thick;
+  font-weight:700;
+  font-size:24px;
+  color:#fff;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #67b168;
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #67b168;
+}
+.rightAlign
+{
+	text-align:right;
+}
+a,a:hover,a:focus{
+	text-decoration:none;
+	color:#fff;
+
+	}
+.footer1{
+	background-color:rgba(0,0,0,1);
+	height:20%;
+	margin-bottom:0px !important;
+	padding:1% !important;
+	font-weight:900;color:#fff;font-size:18px;
+}
+/*HEXA START*/
+.pic{
+
+
+	text-align:center;
+	width:150px;
+	height:150px;
+				-moz-border-radius: 150px;
+    -webkit-border-radius: 150px;border-radius: 150px;box-shadow: 1px 3px 7px rgba(0, 0, 0, 0.97);
+    margin:auto;
+
+}
+
+
+/*HEXA END*/
+.profileName{
+	margin-top:10px;
+	font-size:28px;
+	font-weight:700;
+	}
+.profileAttribute{
+	font-size:20px;
+	font-weight:500;
+}
+.profile2ndAttributes
+{
+	font-size:18px;
+	font-weight:400;
+}
+/*VIDEO STYLES START*/
+.video-background {
+				position: absolute;
+				top: 0;
+				left: 0;
+				overflow: hidden;
+				width: 100%;
+				height: 100%;
+				z-index: 0;
+			}
+			.video-background video {
+				min-height: 100%;
+				min-width:100%;
+			}
+			#page {
+				position: relative;
+				z-index: 1;
+				width: 960px;
+				color: #FFF;
+				background: transparent url(themes/background.png) repeat top left;
+				border-radius: 5px;
+				margin: 0 auto;
+			}
+			#main {
+				padding: 10px;
+				margin: 10px 0;
+			}
+.btn-default {
+  color:#000;
+  font-weight:900;
+  border: 1px solid #ccc;
+  background-color: rgba(0, 0, 0, 0);
+  border-color: #000;
+  border-radius: 7px;
+  box-shadow: 1px 1px 4px #000
+  }
+  .btn-default:hover,.btn-default:focus {
+  color:#000;
+  font-weight:900;
+  border: 1px solid #ccc;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-color: #000;
+  border-radius: 7px;
+   box-shadow: 1px 1px 4px #000;
+  }
+  .container-fluid>.btn-default {
+  color:#000;
+  font-weight:900;
+  border: 1px solid #ccc;
+  background-color: rgba(0, 0, 0, 0);
+  border-color: #000;
+  border-radius: 7px;
+  box-shadow: 1px 1px 4px #000
+  }
+ .container-fluid>.btn-default:hover, .container-fluid>.btn-default:focus {
+  color:#000;
+  font-weight:900;
+  border: 1px solid #ccc;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-color: #000;
+  border-radius: 7px;
+   box-shadow: 1px 1px 4px #000;
+  }
+</style>
+</head>
+
+
+<body>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"><div style="font-size:1.5vw;font-weight:900; color:#CCC;display:inline;"><span style="text-decoration:overline;">TRA</span><div style="padding-bottom:15px;display:inline;font-size:32px;">V</div><span style="text-decoration:overline;">BUD</span></div></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+
+      </ul>
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Profile</a></li>
+        <li class="active"><a href="#">Interests</a></li>
+        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<div class="container-fluid">
+          <div class="row">
+                  <div class=" col-md-4"></div>
+                  <div class="logoDiv col-md-4">
+                  	<div class=" pic"></div>
+                  </div>
+                  <div class="col-md-4"></div>
+                  
+        </div>
+        <div class="row">
+                  <div class=" col-md-4"></div>
+                  <div class="col-md-4">
+                  	<p class="midAlign profileName">{{ name }}</p>
+                  </div>
+                  <div class="col-md-4"></div>
+                  
+        </div>
+        <div class="row">
+                  <div class=" col-md-4"></div>
+                  <div class="midAlign profileAttribute col-md-4">
+                  	<i class="fa fa-calendar-o"></i> : {{ age }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  	<i class="fa fa-venus-mars"></i> : {{ sex }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  	<i class="fa fa-map-marker"></i> : {{ alias }}
+                  </div>
+                  <div class="col-md-4"></div>
+        </div>
+        <div class="row">
+                  <div class=" col-md-3"></div>
+                  <div class="midAlign profile2ndAttributes col-md-6">
+                  	<span style="font-weight:600;">Places Visited:&nbsp;&nbsp;</span>
+{% for k in visited %}
+<a class="badge"><i class="fa fa-map-marker"></i>&nbsp;{{ k }}</a>&nbsp;&nbsp;
+{% endfor %}
+                  </div>
+                  <div class="col-md-3"></div>
+        </div>
+
+
+
+        <div class="row">
+                  <div class=" col-md-3"></div>
+                  <div class="midAlign profile2ndAttributes col-md-6">
+                  	<span style="font-weight:600;">Wants to visit:&nbsp;&nbsp;</span>
+{% for k in notvisited %}
+<a class="badge">{{ k }}</a>&nbsp;&nbsp;
+{% endfor %}
+                  </div>
+                  <div class="col-md-3"></div>
+        </div>
+
+
+        <div class="row">
+                  <div class=" col-md-5"></div>
+                  <div class="midAlign profile2ndAttributes col-md-1"><br>
+                  	<a class="btn btn-default" type="button">Connect</a>
+                  </div>
+                  <div class="midAlign profile2ndAttributes col-md-1"><br>
+                    <a class="btn btn-default" type="button">Follow</a>
+                  </div>
+                  <div class="col-md-5"></div>
+        </div>
+</div>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Made with <i class="fa fa-heart"></i> at Code Pursuit 2015</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a class="navbar-brand" href="#">Quad Code <i class="fa fa-terminal typed-cursor"></i> </a></li>
+
+      </ul>
+
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+</body>
+</html>
