@@ -3,18 +3,18 @@ from functools import wraps
 
 import MySQLdb
 from google.appengine.ext import blobstore
-
 from flask import jsonify
 from flask import session, url_for, flash
-
 from werkzeug.http import parse_options_header
 from flask import Flask, request, make_response, redirect
 from flask.templating import render_template
+
 
 app = Flask(__name__)
 app.secret_key = 'my precious'
 app.config['SESSION_TYPE'] = 'filesystem'
 # SESSION CHECKIN FOR EVERY AUTHORIZED PAGE
+
 def login_required(f):
     @wraps(f)
     def wrap(*args, **kwargs):
@@ -45,7 +45,6 @@ def _create_connection():
             user='root',
             passwd='travbud2015'
         )
-
 
 # When the user signs up for the first time
 @app.route('/home')
@@ -245,8 +244,9 @@ def profile():
         cur.execute(query)
         row = cur.fetchall()
         if row == None:
-            return redirect(url_for('home'))
             db.close()
+            return redirect(url_for('home'))
+
         list = []
         for k in row:
             for p in k:
@@ -269,6 +269,9 @@ def profile():
         return render_template('profile.html',name=list[1],sex=list[2],age=list[3],alias=list[4],visited=list1,notvisited=list2)
 
 class profile:
+    def __init__(self):
+        pass
+
     name = "Rahul"
     age = "55"
     sex = "Female"
